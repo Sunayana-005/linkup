@@ -26,6 +26,8 @@ It scores all of this and ranks potential teammates by compatibility. If two peo
 
 ---
 
+![alt text](image.png)
+
 ## Features
 
 - **Onboarding flow** -- two-step setup where you pick interests and dial in your build style using sliders. Takes about a minute.
