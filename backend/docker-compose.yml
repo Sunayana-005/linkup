@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: linkup-backend
+    ports:
+      - "8000:8000"
+    volumes:
+      # Mount code for development (hot reload)
+      - .:/app
+      # Persist ChromaDB data
+      - chroma_data:/app/chroma_db
+      # Mount firebase credentials (must exist on host)
+      - ./firebase-credentials.json:/app/firebase-credentials.json:ro
+    environment:
+      - FIREBASE_CREDENTIALS_PATH=/app/firebase-credentials.json
+      - CHROMA_PERSIST_DIR=/app/chroma_db
+      - API_HOST=0.0.0.0
+      - API_PORT=8000
+      - PYTHONUNBUFFERED=1
+    env_file:
+      - .env
+    restart: unless-stopped
+    networks:
+      - linkup-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+volumes:
+  chroma_data:
+    driver: local
+
+networks:
+  linkup-network:
+    driver: bridge
