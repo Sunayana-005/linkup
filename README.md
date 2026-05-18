@@ -1,4 +1,7 @@
 # LinkUp
+<p align="center">
+    <img width="444" height="396" alt="logo" src="https://github.com/user-attachments/assets/1d57cf2f-019a-4284-9115-e1d6f1b1df5a" />
+</p>
 
 [![Built with Expo](https://img.shields.io/badge/Built_with-Expo-000020?style=for-the-badge&logo=expo&logoColor=white)](https://expo.dev)
 [![Framework](https://img.shields.io/badge/Framework-React_Native-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://reactnative.dev)
@@ -261,6 +264,16 @@ You'll need these enabled in your Firebase project:
 ## Contributing
 
 Open an issue or submit a PR. Keep it simple -- this is a hackathon project, not enterprise software.
+
+---
+# Future Scope
+
+- Spotify integration
+- GitHub activity matching
+- AI-generated icebreakers
+- Hackathon team mode
+- Discord like channels to cater for different tasks
+- Shared collaboration spaces
 
 ---
 
