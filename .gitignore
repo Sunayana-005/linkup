@@ -48,3 +48,4 @@ mobile/yarn-error.*
 
 # TypeScript
 mobile/*.tsbuildinfo
+node_modules
