@@ -59,76 +59,141 @@ export default function ProfilePage() {
   }
 
   return (
-    <div className="min-h-screen">
-      {/* Navigation */}
-      <nav className="bg-dark-lighter border-b border-gray-800">
-        <div className="container mx-auto px-6 py-4 flex justify-between items-center">
-          <div className="flex items-center gap-2">
-            <Code2 className="w-8 h-8 text-primary" />
-            <span className="text-2xl font-bold gradient-text">LinkUp</span>
-          </div>
-          
-          <div className="flex items-center gap-4">
-            <Link href="/dashboard" className="text-gray-400 hover:text-white transition-colors">
-              <Users className="inline mr-2" />
-              Discover
-            </Link>
-            <Link href="/matches" className="text-gray-400 hover:text-white transition-colors">
-              <MessageCircle className="inline mr-2" />
-              Matches
-            </Link>
-            <Link href="/profile" className="text-primary font-medium">
-              <User className="inline mr-2" />
-              Profile
-            </Link>
-            <button
-              onClick={handleSignOut}
-              className="text-gray-400 hover:text-white transition-colors"
-            >
-              <LogOut className="inline mr-2" />
-              Sign Out
-            </button>
-          </div>
-        </div>
-      </nav>
+  <div className="min-h-screen bg-[#F7F4EE] text-[#2D2D2D]">
+    {/* NAVBAR */}
+    <nav className="sticky top-0 z-50 backdrop-blur-md bg-[#F7F4EE]/80 border-b border-[#E9E2D7]">
+      <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+        <div>
+          <h1 className="text-2xl font-semibold tracking-tight">
+            LinkUp
+          </h1>
 
-      {/* Main Content */}
-      <div className="container mx-auto px-6 py-12">
-        <div className="max-w-3xl mx-auto">
-          <div className="card">
-            {/* Header */}
-            <div className="flex justify-between items-start mb-8">
-              <div className="flex items-center gap-4">
-                <div className="w-24 h-24 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-4xl font-bold">
-                  {profile.display_name.charAt(0).toUpperCase()}
+          <p className="text-sm text-[#8F877B]">
+            your builder identity
+          </p>
+        </div>
+
+        <div className="flex items-center gap-5">
+          <Link
+            href="/dashboard"
+            className="text-[#7B746A] hover:text-black transition"
+          >
+            <Users className="w-5 h-5" />
+          </Link>
+
+          <Link
+            href="/matches"
+            className="text-[#7B746A] hover:text-black transition"
+          >
+            <MessageCircle className="w-5 h-5" />
+          </Link>
+
+          <Link
+            href="/profile"
+            className="text-[#7C8C6C]"
+          >
+            <User className="w-5 h-5 fill-[#7C8C6C]" />
+          </Link>
+
+          <button
+            onClick={handleSignOut}
+            className="text-[#7B746A] hover:text-black transition"
+          >
+            <LogOut className="w-5 h-5" />
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    {/* MAIN */}
+    <div className="px-6 py-12">
+      <div className="max-w-4xl mx-auto">
+        {/* PROFILE CARD */}
+        <div className="bg-white border border-[#ECE5DA] rounded-[38px] overflow-hidden shadow-[0_10px_40px_rgba(0,0,0,0.04)]">
+          
+          {/* TOP BANNER */}
+          <div className="h-40 bg-gradient-to-br from-[#DCD4C8] via-[#F2ECE2] to-[#E7E0D4]" />
+
+          {/* CONTENT */}
+          <div className="px-8 pb-10">
+            {/* PROFILE HEADER */}
+            <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 -mt-16 mb-10">
+              
+              <div className="flex items-end gap-5">
+                {/* AVATAR */}
+                <div className="w-32 h-32 rounded-full bg-[#7C8C6C] border-[6px] border-white flex items-center justify-center shadow-lg">
+                  <span className="text-5xl font-semibold text-white">
+                    {profile.display_name
+                      .charAt(0)
+                      .toUpperCase()}
+                  </span>
                 </div>
-                <div>
-                  <h1 className="text-3xl font-bold">{profile.display_name}</h1>
-                  <p className="text-gray-400">{profile.tagline}</p>
+
+                {/* INFO */}
+                <div className="pb-3">
+                  <p className="text-sm uppercase tracking-[0.2em] text-[#A49C91] mb-2">
+                    Builder Aura
+                  </p>
+
+                  <h1 className="text-4xl font-semibold tracking-tight">
+                    {profile.display_name}
+                  </h1>
+
+                  <p className="text-[#7E766B] mt-2 text-lg">
+                    {profile.tagline}
+                  </p>
                 </div>
               </div>
-              <Link href="/onboarding" className="btn-outline">
-                <Edit className="inline mr-2 w-4 h-4" />
+
+              {/* EDIT BUTTON */}
+              <Link
+                href="/onboarding"
+                className="h-fit px-5 py-3 rounded-full bg-[#F3EEE6] text-[#5F584F] hover:bg-[#ECE3D7] transition"
+              >
+                <Edit className="inline w-4 h-4 mr-2" />
                 Edit Profile
               </Link>
             </div>
 
-            {/* Bio */}
+            {/* BUILDER TAGS */}
+            <div className="flex flex-wrap gap-3 mb-10">
+              <div className="px-4 py-2 rounded-full bg-[#F3EEE6] text-[#625B52] text-sm">
+                Night Owl
+              </div>
+
+              <div className="px-4 py-2 rounded-full bg-[#F3EEE6] text-[#625B52] text-sm">
+                Chaos Builder
+              </div>
+
+              <div className="px-4 py-2 rounded-full bg-[#F3EEE6] text-[#625B52] text-sm">
+                MVP Maxxer
+              </div>
+            </div>
+
+            {/* BIO */}
             {profile.bio && (
-              <div className="mb-8">
-                <h2 className="text-xl font-bold mb-3">About Me</h2>
-                <p className="text-gray-400">{profile.bio}</p>
+              <div className="mb-12">
+                <p className="text-sm uppercase tracking-[0.2em] text-[#A49C91] mb-4">
+                  About
+                </p>
+
+                <p className="text-[#5F584F] leading-relaxed text-lg">
+                  {profile.bio}
+                </p>
               </div>
             )}
 
-            {/* Interests */}
-            <div className="mb-8">
-              <h2 className="text-xl font-bold mb-3">Interests</h2>
-              <div className="flex flex-wrap gap-2">
-                {profile.interests.map(interest => (
+            {/* INTERESTS */}
+            <div className="mb-12">
+              <p className="text-sm uppercase tracking-[0.2em] text-[#A49C91] mb-5">
+                Interests
+              </p>
+
+              <div className="flex flex-wrap gap-3">
+                {profile.interests.map((interest) => (
                   <span
                     key={interest}
-                    className="bg-primary/20 text-primary px-4 py-2 rounded-full font-medium"
+                    className="px-5 py-3 rounded-full bg-[#F7F4EE] text-[#5F584F] border border-[#E7E0D5]"
                   >
                     {interest}
                   </span>
@@ -136,50 +201,68 @@ export default function ProfilePage() {
               </div>
             </div>
 
-            {/* Build Habits */}
-            <div className="mb-8">
-              <h2 className="text-xl font-bold mb-4">Build Habits</h2>
-              <div className="space-y-4">
-                {Object.entries(profile.build_habits).map(([key, value]) => (
-                  <div key={key}>
-                    <div className="flex justify-between mb-2">
-                      <span className="capitalize text-gray-400">
-                        {key.replace('_', ' ')}
-                      </span>
-                      <span className="text-primary font-medium">
-                        {Math.round(value * 100)}%
-                      </span>
+            {/* BUILD HABITS */}
+            <div className="mb-12">
+              <p className="text-sm uppercase tracking-[0.2em] text-[#A49C91] mb-6">
+                Build Habits
+              </p>
+
+              <div className="space-y-6">
+                {Object.entries(profile.build_habits).map(
+                  ([key, value]) => (
+                    <div key={key}>
+                      <div className="flex justify-between mb-3">
+                        <span className="capitalize text-[#6A635A]">
+                          {key.replace('_', ' ')}
+                        </span>
+
+                        <span className="text-[#7C8C6C] font-medium">
+                          {Math.round(value * 100)}%
+                        </span>
+                      </div>
+
+                      <div className="w-full h-3 rounded-full bg-[#EEE7DB] overflow-hidden">
+                        <div
+                          className="h-full rounded-full bg-[#7C8C6C]"
+                          style={{
+                            width: `${value * 100}%`,
+                          }}
+                        />
+                      </div>
                     </div>
-                    <div className="h-2 bg-dark-lighter rounded-full overflow-hidden">
-                      <div
-                        className="h-full bg-gradient-to-r from-primary to-secondary"
-                        style={{ width: `${value * 100}%` }}
-                      ></div>
-                    </div>
-                  </div>
-                ))}
+                  )
+                )}
               </div>
             </div>
 
-            {/* Hackathon Scenarios */}
+            {/* HACKATHON STYLE */}
             <div>
-              <h2 className="text-xl font-bold mb-4">Hackathon Style</h2>
-              <div className="space-y-4">
-                {Object.entries(profile.hackathon_scenarios).map(([key, value]) => (
+              <p className="text-sm uppercase tracking-[0.2em] text-[#A49C91] mb-6">
+                Hackathon Style
+              </p>
+
+              <div className="space-y-6">
+                {Object.entries(
+                  profile.hackathon_scenarios
+                ).map(([key, value]) => (
                   <div key={key}>
-                    <div className="flex justify-between mb-2">
-                      <span className="capitalize text-gray-400">
+                    <div className="flex justify-between mb-3">
+                      <span className="capitalize text-[#6A635A]">
                         {key.replace('_', ' ')}
                       </span>
-                      <span className="text-secondary font-medium">
+
+                      <span className="text-[#A07C66] font-medium">
                         {Math.round(value * 100)}%
                       </span>
                     </div>
-                    <div className="h-2 bg-dark-lighter rounded-full overflow-hidden">
+
+                    <div className="w-full h-3 rounded-full bg-[#EEE7DB] overflow-hidden">
                       <div
-                        className="h-full bg-gradient-to-r from-secondary to-primary"
-                        style={{ width: `${value * 100}%` }}
-                      ></div>
+                        className="h-full rounded-full bg-[#C6A48B]"
+                        style={{
+                          width: `${value * 100}%`,
+                        }}
+                      />
                     </div>
                   </div>
                 ))}
@@ -189,5 +272,6 @@ export default function ProfilePage() {
         </div>
       </div>
     </div>
-  );
+  </div>
+);
 }
